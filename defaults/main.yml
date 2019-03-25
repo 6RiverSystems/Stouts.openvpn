@@ -7,7 +7,7 @@ openvpn_etcdir: /etc/openvpn
 openvpn_keydir: "{{openvpn_etcdir}}/keys"
 
 # Set to 'true' to install openvpn from the upstream repo
-openvpn_use_external_repo: false
+openvpn_use_external_repo: true
 
 # Set to 'true' to install EasyRSA from system packages
 openvpn_use_system_easyrsa: false
@@ -19,7 +19,7 @@ openvpn_proto: udp
 openvpn_dev: tun
 openvpn_server: 10.8.0.0 255.255.255.0
 openvpn_bridge: {}
-openvpn_max_clients: 100
+openvpn_max_clients: 1000
 openvpn_log: /var/log/openvpn.log
 openvpn_keepalive: "10 120"
 openvpn_ifconfig_pool_persist: ipp.txt
@@ -47,11 +47,11 @@ openvpn_client_options: []
 # - client-to-client
 
 openvpn_key_country: US
-openvpn_key_province: CA
-openvpn_key_city: SanFrancisco
-openvpn_key_org: Fort-Funston
-openvpn_key_email: me@myhost.mydomain
-openvpn_key_size: 1024
+openvpn_key_province: MA
+openvpn_key_city: Waltham
+openvpn_key_org: 6RiverSystems
+openvpn_key_email: devops@6river.com
+openvpn_key_size: 4096
 
 # Make clients certificate
 openvpn_clients:
@@ -79,7 +79,7 @@ openvpn_simple_auth: false
 openvpn_simple_auth_password: ""
 
 # Whether to embed CA, cert, and key info inside client OVPN config file.
-openvpn_unified_client_profiles: false
+openvpn_unified_client_profiles: true
 
 # Download the created client credentials to the specified directory
 openvpn_download_clients: false
