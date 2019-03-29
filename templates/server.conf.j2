@@ -111,11 +111,7 @@ keepalive {{ openvpn_keepalive }}
 
 # Enable compression on the VPN link. If you enable it here, you must also
 # enable it in the client config file.
-{% if openvpn_comp_lzo -%}
-comp-lzo
-{% else -%}
-;comp-lzo
-{% endif %}
+compress
 
 # The persist options will try to avoid accessing certain resources on restart
 # that may no longer be accessible because of the privilege downgrade.
@@ -180,9 +176,10 @@ script-security 3 execve
 {{option}}
 {% endfor %}
 
+reneg-sec 36000
+
 # ROUTE THE CLIENT'S INTERNET ACCESS THROUGH THIS SERVER:
 push "redirect-gateway def1"
-push "dhcp-option DNS "
 push "dhcp-option DNS 8.8.8.8"
 
 {% if crl_pem_file.stat.exists %}

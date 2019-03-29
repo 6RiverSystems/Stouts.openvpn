@@ -76,11 +76,13 @@ tls-auth {{openvpn_tls_key}} 1
 
 # Enable compression on the VPN link. Don't enable this unless it is also
 # enabled in the server config file.
-{% if openvpn_comp_lzo -%}
-comp-lzo
-{% else -%}
-;comp-lzo
-{% endif %}
+compress
+
+auth SHA512
+
+auth-nocache
+
+reneg-sec 0
 
 # Set log file verbosity.
 verb {{openvpn_verb}}
